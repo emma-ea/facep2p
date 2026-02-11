@@ -29,7 +29,7 @@ const fetchUserDevices = async () => {
 const changeAudioInput = (e) => {
   const deviceId = e.target.value;
 
-  const newConstraint = {
+  const newConstraints = {
     audio: { deviceId: { exact: deviceId } },
     video: true,
   };
