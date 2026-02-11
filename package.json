@@ -1,0 +1,27 @@
+{
+  "name": "webrtc-facep2p",
+  "version": "1.0.0",
+  "main": "changeButton.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "nm": "npx nodemon expressServer.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emma-ea/facep2p.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emma-ea/facep2p/issues"
+  },
+  "homepage": "https://github.com/emma-ea/facep2p#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}
