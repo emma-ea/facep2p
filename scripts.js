@@ -2,6 +2,11 @@ let stream = null;
 let videoEl = document.querySelector("#my-video");
 let otherVideoEl = document.querySelector("#other-video");
 
+// feeds
+const audioInsSelectorEl = document.querySelector("#audio-input");
+const audioOutSelectorEl = document.querySelector("#audio-output");
+const videoFeedsEl = document.querySelector("#video-input");
+
 const constraints = {
   audio: true,
   video: true,
@@ -20,6 +25,7 @@ const getMicAndCamera = async (e) => {
       "grey",
       "grey",
     ]);
+    fetchUserDevices();
   } catch (err) {
     console.log(err);
   }
