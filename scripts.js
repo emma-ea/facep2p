@@ -7,6 +7,10 @@ const audioInsSelectorEl = document.querySelector("#audio-input");
 const audioOutSelectorEl = document.querySelector("#audio-output");
 const videoFeedsEl = document.querySelector("#video-input");
 
+audioInsSelectorEl.addEventListener("change", (e) => changeAudioInput(e));
+audioOutSelectorEl.addEventListener("change", (e) => changeAudioOutput(e));
+videoFeedsEl.addEventListener("change", (e) => changeVideoInput(e));
+
 const constraints = {
   audio: true,
   video: true,

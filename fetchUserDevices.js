@@ -25,3 +25,33 @@ const fetchUserDevices = async () => {
 
   console.log(devices);
 };
+
+const changeAudioInput = (e) => {
+  const deviceId = e.target.value;
+
+  const newConstraint = {
+    audio: { deviceId: { exact: deviceId } },
+    video: true,
+  };
+
+  try {
+    stream = navigator.mediaDevices.getUserMedia(newConstraints);
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+const changeAudioOutput = async (e) => {
+  await videoEl.setSinkId(e.target.value);
+};
+
+const changeVideoInput = async (e) => {
+  const deviceId = e.target.value;
+
+  const newConstraints = {
+    audio: true,
+    video: { deviceId: { exact: deviceId } },
+  };
+
+  stream = navigator.mediaDevices.getUserMedia(newConstraints);
+};
