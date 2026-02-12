@@ -32,13 +32,9 @@ const initPeersConnection = async (e) => {
     otherVideoEl.srcObject = inbound;
   };
 
-  rtcPeer.onnegotiationneeded = async (ev) => {
-    const offer = await rtcPeer.createOffer();
-    await rtcPeer.setRemoteDescription(offer);
-    const sdp = await rtcPeer.setLocalDescription(offer);
-    console.log("negotiation completed with sdp: ", sdp);
-    console.log("negotiation completed with offer: ", offer);
-  };
+  const offer = await rtcPeer.createOffer();
+  await rtcPeer.setLocalDescription(offer);
+  console.log("completed with sdp offer: ", offer);
 
   rtcPeer.onicecandidate = (ev) => {
     if (ev.candidate) {
@@ -47,7 +43,7 @@ const initPeersConnection = async (e) => {
         console.log("ice", ice);
       }
       ice = ev.candidate;
-      console.log("icee: ", JSON.stringify(ice));
+      console.log("ice: ", JSON.stringify(ice));
     } else {
       console.log("No cds");
     }
