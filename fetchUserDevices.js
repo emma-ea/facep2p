@@ -3,6 +3,8 @@ let availableAudioOuts = [];
 let availableVideoFeeds = [];
 
 const fetchUserDevices = async () => {
+  clearUserDevices();
+
   const devices = await navigator.mediaDevices.enumerateDevices();
   devices.forEach((device) => {
     const option = document.createElement("option");
@@ -26,7 +28,7 @@ const fetchUserDevices = async () => {
   console.log(devices);
 };
 
-const changeAudioInput = (e) => {
+const changeAudioInput = async (e) => {
   const deviceId = e.target.value;
 
   const newConstraints = {
@@ -35,7 +37,7 @@ const changeAudioInput = (e) => {
   };
 
   try {
-    stream = navigator.mediaDevices.getUserMedia(newConstraints);
+    stream = await navigator.mediaDevices.getUserMedia(newConstraints);
   } catch (err) {
     console.error(err);
   }
@@ -46,12 +48,27 @@ const changeAudioOutput = async (e) => {
 };
 
 const changeVideoInput = async (e) => {
-  const deviceId = e.target.value;
+  const newDeviceId = e.target.value;
+
+  // stopMyFeed(e);
 
   const newConstraints = {
     audio: true,
-    video: { deviceId: { exact: deviceId } },
+    video: {
+      deviceId: { exact: newDeviceId },
+    },
   };
 
-  stream = navigator.mediaDevices.getUserMedia(newConstraints);
+  stream = await navigator.mediaDevices.getUserMedia(newConstraints);
+  showMyFeed(e);
+};
+
+const clearUserDevices = () => {
+  availableAudioIns = [];
+  availableAudioOuts = [];
+  availableVideoFeeds = [];
+
+  audioInsSelectorEl.replaceChildren();
+  audioOutSelectorEl.replaceChildren();
+  videoFeedsEl.replaceChildren();
 };

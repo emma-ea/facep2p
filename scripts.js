@@ -6,6 +6,7 @@ let otherVideoEl = document.querySelector("#other-video");
 const audioInsSelectorEl = document.querySelector("#audio-input");
 const audioOutSelectorEl = document.querySelector("#audio-output");
 const videoFeedsEl = document.querySelector("#video-input");
+const callLineEl = document.querySelector("#call-number");
 
 audioInsSelectorEl.addEventListener("change", (e) => changeAudioInput(e));
 audioOutSelectorEl.addEventListener("change", (e) => changeAudioOutput(e));
@@ -50,6 +51,8 @@ const showMyFeed = (e) => {
     "grey",
     "green",
   ]);
+
+  initPeersConnection(e);
 };
 
 const stopMyFeed = (e) => {
@@ -57,6 +60,7 @@ const stopMyFeed = (e) => {
   tracks.forEach((track) => {
     track.stop();
   });
+
   changeButtons([
     "blue",
     "grey",
@@ -93,3 +97,9 @@ document
 document
   .querySelector("#share-screen")
   .addEventListener("click", (e) => shareScreen(e));
+document
+  .querySelector("#start-call")
+  .addEventListener("click", (e) => callPeer(e));
+document
+  .querySelector("#end-call")
+  .addEventListener("click", (e) => endCall(e));

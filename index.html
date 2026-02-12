@@ -46,6 +46,11 @@
         <button id="share-screen" class="btn btn-secondary d-block mb-1">
           Share Screen
         </button>
+        <div class="mb-1">
+          <button id="start-call" class="btn btn-success">Call Peer</button>
+          <button id="end-call" class="btn btn-danger">End Call</button>
+        </div>
+        <input type="text" id="recipient-sdp" />
         <div>
           <label>Select audio input: </label>
           <select id="audio-input"></select>
@@ -61,7 +66,7 @@
       </div>
       <div class="videos col-8">
         <div>
-          <h3>My feed</h3>
+          <h3>My feed (<span id="call-number"></span>)</h3>
           <video id="my-video" class="video" autoplay playsinline></video>
         </div>
         <div>
@@ -76,5 +81,6 @@
     <script src="recordVideo.js"></script>
     <script src="shareScreen.js"></script>
     <script src="fetchUserDevices.js"></script>
+    <script src="startCallSession.js"></script>
   </body>
 </html>
